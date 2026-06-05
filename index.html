@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="LifeSide is a benchmark for evaluating agents as lifelong digital companions across memory, emotion, environment, and privacy."
+    />
+    <meta property="og:title" content="LifeSide: Benchmarking Agents as Lifelong Digital Companions" />
+    <meta
+      property="og:description"
+      content="A multi-session benchmark for lifelong digital companionship in Memory-Emotion-Environment loops."
+    />
+    <meta property="og:type" content="website" />
+    <title>LifeSide | Lifelong Digital Companion Benchmark</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero" id="top">
+        <img class="logo" src="figure/lifeside.png" alt="LifeSide visual identity" />
+        <h1>LifeSide: Benchmarking Agents as Lifelong Digital Companions</h1>
+        <p class="authors">
+          Yuqian Wu<sup>1</sup>, Zhijie Deng<sup>1</sup>, Wei Chen<sup>1,3</sup>,
+          Junwei Li<sup>1</sup>, Yutian Jiang<sup>1</sup>, Junle Chen<sup>2</sup>,
+          <br />
+          Zhengjun Huang<sup>2</sup>, Qingxiang Liu<sup>1</sup>, Jing Tang<sup>1</sup>,
+          Jiaheng Wei<sup>1</sup>, Yuxuan Liang<sup>1</sup>
+        </p>
+        <p class="affiliations">
+          <sup>1</sup>Hong Kong University of Science and Technology (Guangzhou),
+          <sup>2</sup>Hong Kong University of Science and Technology,
+          <sup>3</sup>Tencent
+        </p>
+
+        <div class="button-row" aria-label="Project links">
+          <a class="button" href="EMNLP26_ES.pdf">Paper</a>
+          <a class="button muted" href="#resources">Code</a>
+          <a class="button muted" href="#resources">Dataset</a>
+        </div>
+
+      </header>
+
+      <nav class="toc" aria-label="Page sections">
+        <a href="#introduction">Introduction</a>
+        <a href="#benchmark">Benchmark</a>
+        <a href="#tasks">Tasks</a>
+        <a href="#main-results">Main Table</a>
+        <a href="#resources">Resources</a>
+        <a href="#citation">Citation</a>
+      </nav>
+
+      <main class="content">
+      <section id="introduction" class="section">
+        <h2>Introduction</h2>
+        <div class="intro-layout">
+          <div class="intro-copy">
+            <p>
+              Lifelong digital companions must integrate cross-session cues, continually update their
+              understanding of users, and adapt to shifting privacy boundaries. Existing evaluations
+              usually test memory recall and short-term empathy separately, leaving the long-term
+              companion setting underexplored.
+            </p>
+            <p>
+              LifeSide centers evaluation on the <strong>Memory-Emotion-Environment</strong> loop. The
+              benchmark models users as persistent worlds with layered profiles, event trajectories,
+              social relations, goals, environmental dynamics, and partially observable conversations.
+            </p>
+          </div>
+          <figure class="intro-figure">
+            <img
+              src="assets/motivation_cropped.png"
+              alt="Motivation for long-term emotional companionship"
+            />
+          </figure>
+        </div>
+      </section>
+
+      <section id="benchmark" class="section">
+        <h2>Benchmark Overview</h2>
+        <p>
+          LifeSide builds 2,000 census-grounded personas, expands each into a 24-36 month timeline,
+          and projects hidden user worlds into visible multi-session conversations. The pipeline
+          preserves the gap between latent thoughts and spoken words, making the benchmark partially
+          observable in a way that mirrors real companion interactions.
+        </p>
+
+        <div class="stats" aria-label="Benchmark statistics">
+          <div><strong>2,000</strong><span>personas</span></div>
+          <div><strong>24-36</strong><span>month timelines</span></div>
+          <div><strong>111K+</strong><span>tasks</span></div>
+          <div><strong>4</strong><span>ability levels</span></div>
+        </div>
+
+        <div class="pipeline-notes" aria-label="Benchmark construction highlights">
+          <div>
+            <strong>Persona grounding</strong>
+            <p>
+              Census-aligned profiles seed stable identities, relations, goals, and preferences.
+            </p>
+          </div>
+          <div>
+            <strong>World evolution</strong>
+            <p>
+              Month-level trajectories update emotion, environment, and memory across sessions.
+            </p>
+          </div>
+          <div>
+            <strong>Task projection</strong>
+            <p>
+              Hidden user worlds become observable conversations and graded companion challenges.
+            </p>
+          </div>
+        </div>
+
+        <figure class="pipeline-figure">
+          <img
+            src="assets/construction_pipeline_cropped.png"
+            alt="LifeSide construction and evaluation pipeline"
+          />
+        </figure>
+      </section>
+
+      <section id="tasks" class="section">
+        <h2>Evaluation Tasks</h2>
+        <p>
+          LifeSide organizes evaluation into four increasingly demanding levels, moving from
+          factual long-horizon recall to multi-turn emotional support. The tasks are designed to
+          probe whether an agent can recover past events, infer evolving user states, respect
+          context-dependent privacy boundaries, and provide supportive responses grounded in the
+          user's longitudinal life context.
+        </p>
+        <div class="task-details" aria-label="Evaluation task details">
+          <div>
+            <strong>Memory Tracking</strong>
+            <p>
+              Tests structured episodic recall and event-chain tracking, requiring agents to recover
+              missing event attributes and ordered emotion sequences from long histories.
+            </p>
+          </div>
+          <div>
+            <strong>User Understanding</strong>
+            <p>
+              Measures implicit inference and temporal user modeling, where agents choose discrete
+              options that reflect hidden preferences, changing states, and profile updates.
+            </p>
+          </div>
+          <div>
+            <strong>Privacy Control</strong>
+            <p>
+              Evaluates contextual disclosure and boundary defense, asking agents to produce
+              privacy-preserving responses under different recipients, purposes, and pressures.
+            </p>
+          </div>
+          <div>
+            <strong>Emotional Companionship</strong>
+            <p>
+              Assesses regulation, empathy, and collaborative alignment through multi-turn
+              supportive dialogue grounded in memory, emotion, and environment signals.
+            </p>
+          </div>
+        </div>
+
+        <figure>
+          <img src="assets/evaluation_tasks_new_cropped.png" alt="LifeSide evaluation tasks" />
+        </figure>
+      </section>
+
+      <section id="main-results" class="section">
+        <h2>Main Results</h2>
+        <p>
+          Current agents remain far from serving as lifelong digital companions. Table 2 shows that
+          even frontier models hit a low ceiling on long-horizon memory and user understanding: the
+          best structured episodic recall score is only 41.24%, event-chain tracking stays around
+          the mid-50% range, and implicit inference remains below 40% across all methods.
+        </p>
+        <div class="result-highlights" aria-label="Main result highlights">
+          <div>
+            <strong>Memory gains do not become companionship</strong>
+            <p>
+              RAG and memory agents improve some factual recall signals, especially cause recall,
+              but these gains do not consistently improve empathy, regulation, or supportive
+              dialogue quality.
+            </p>
+          </div>
+          <div>
+            <strong>Retrieved context is often fragmented</strong>
+            <p>
+              External memory systems retrieve top-ranked snippets rather than coherent timelines,
+              making it difficult for agents to preserve event order and align past evidence with
+              the current situation.
+            </p>
+          </div>
+          <div>
+            <strong>Privacy remains a central bottleneck</strong>
+            <p>
+              More complete answers can increase privacy violations, especially under disclosure
+              pressure, showing that companions need stronger mechanisms for enforcing contextual
+              boundaries.
+            </p>
+          </div>
+        </div>
+
+        <figure class="wide-figure">
+          <img src="assets/main_table_new_cropped.png" alt="Table 2 main results on LifeSide" />
+        </figure>
+      </section>
+
+      <section id="resources" class="section">
+        <h2>Resources</h2>
+        <div class="resource-grid">
+          <a href="EMNLP26_ES.pdf">
+            <strong>Paper</strong>
+            <span>Read the current PDF draft.</span>
+          </a>
+          <a class="disabled" href="#">
+            <strong>Code</strong>
+            <span>Coming soon.</span>
+          </a>
+          <a class="disabled" href="#">
+            <strong>Dataset</strong>
+            <span>Coming soon.</span>
+          </a>
+        </div>
+      </section>
+
+      <section id="citation" class="section">
+        <h2>Citation</h2>
+        <pre><code>@inproceedings{lifeside2026,
+  title = {LifeSide: Benchmarking Agents as Lifelong Digital Companions},
+  author = {Anonymous},
+  booktitle = {EMNLP},
+  year = {2026}
+}</code></pre>
+      </section>
+
+      <footer class="footer">
+        <a href="#top">Back to top</a>
+        <span>LifeSide benchmark project page.</span>
+      </footer>
+      </main>
+    </div>
+  </body>
+</html>

@@ -6,7 +6,7 @@ Upload these files as the root of a GitHub Pages repository:
 
 - `index.html`
 - `styles.css`
-- `EMNLP26_ES.pdf`
+- `LifeSide_Paper.pdf`
 - `assets/`
 - `figure/`
 
